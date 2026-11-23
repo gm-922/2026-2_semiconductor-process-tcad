@@ -82,3 +82,21 @@ CMOS의 Retrograde Well(P-Well/N-Well) 형성은 다중 에너지 주입을 연�
 - **기록 양식:** [활동](templates/activity_template.md) / [시뮬레이션](templates/simulation_template.md)
 - **기본 작업 환경:** ChatGPT + GitHub. Sentaurus Workbench/Process 실행; MobaXterm SSH 지원은 별도 요청 시 진행.
 - **변경 원칙:** GitHub 조회·분석은 가능하나 파일 작성·수정·삭제와 Commit·Push·Merge 등은 사용자의 명시적인 요청 또는 사전 동의가 있을 때만 합니다. 기존 기록을 임의로 고치지 않고 새 기록으로 변경 이력을 관리합니다.
+
+## 7. 저장소 폴더 안내 (2026-11-23)
+
+> **처음 방문한 분은 이 표에서 시작하세요.** 확정된 연구 계획과, 이론 예측·Sentaurus 실행 전 코드 자료는 구분해서 관리합니다.
+
+| 경로 | 저장 내용 | 어떤 때 확인하나요? |
+|---|---|---|
+| [README.md](README.md) | 이 프로젝트의 **확정 연구 주제·범위·진행 계획** (위 1~6장) | 연구의 공식 기준을 확인할 때 |
+| [activities/](activities/README.md) | 날짜별 팀원 활동 기록, 회의록, 11/11 열산화 주제 이력과 11/18 변경 기록 | 누가 언제 실제 무엇을 수행했는지 확인할 때 |
+| [simulations/](simulations/README.md) | 실제 시뮬레이션의 목적·변수·실행 코드·환경·로그·결과를 기록할 곳 | **실제 TCAD 실행 기록**을 확인할 때 |
+| [templates/](templates/README.md) | 팀원별 활동 및 실험 기록 양식 | 새로운 기록을 작성할 때 |
+| **[box-profile-tcad/](box-profile-tcad/README.md)** | 제공받은 ZIP의 사전 이론조사, LSS 계산, 프로파일 그래프 미리보기, Sentaurus `.cmd` 초안 46개 | **실행 전 자료 검토·코드 확인**을 할 때 |
+
+### 새 자료 열람 순서
+
+[전체 ZIP 자료 안내](box-profile-tcad/README.md) → [이론·파라미터 조사](box-profile-tcad/box_profile_사전자료조사.md) → [이론 예측 그래프](box-profile-tcad/figures/README.md) → [분석 코드](box-profile-tcad/analysis/README.md) → [TCAD 코드·실행 목록](box-profile-tcad/tcad/README.md).
+
+**중요:** 새 폴더의 `.cmd`는 실행 준비용 입력 코드이며, 실제 Sentaurus 실행 완료 기록이 아닙니다. 제안된 Boron, 0.05–0.45 µm, 총 Dose 4×10¹² cm⁻², 1050°C·10초 등은 **팀이 확정한 값이 아닙니다**. 기본 연구 범위는 주입 1~4회 총 Dose 동일, RTA A/B 비교입니다. C 및 확산 모델 비교·열처리량 sweep은 별도 검토 후보입니다. [반영 내역](box-profile-tcad/SOURCE_MANIFEST.md)에 원본 파일과 웹 미리보기 차이를 명시했습니다.

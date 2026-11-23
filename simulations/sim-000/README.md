@@ -27,7 +27,18 @@
 - **[실제 실행에 사용한 Workbench 입력 코드](sprocess_fps.cmd)** — 사용자 제공 SPROCESS 입력 파일 원본 텍스트.
 - **[1차 원본 CSV 데이터](results/grid_convergence.csv)** — Sentaurus Visual에서 내보낸 네 가지 프로파일의 X/Y 데이터.
 - **[Grid별 수렴성 지표](results/convergence_metrics.csv)** — 원본 CSV에서 재계산한 비교값.
-- **[BTotal 중첩 그래프](results/profile_overlay.svg)** — 원본 CSV를 바탕으로 재생성한 도식(원본 Sentaurus Visual 캡처와 구별).
+- **[사용자 제공 BTotal 중첩 그래프](results/grid_convergence_user.webp)** — 실제 Sentaurus Visual 결과 화면(웹 표시용 WebP 변환).
+- **[사용자 제공 Workbench 파라미터 설정 화면](results/workbench_user.webp)** — grid_nm과 4개 실험 노드(웹 표시용 WebP 변환).
 
 ### 범위 구분
 이 실험은 프로젝트의 주입 횟수 1~4회 비교 및 RTA Case A/B **전에 수행하는 기초 격자 검토**다. 여기의 80 keV, 1×10¹² cm⁻², (100) Si, B 이온 등의 조건은 **SIM-000 1차 실험의 실제 적용값**이지 후속 연구 전체의 최종 확정값이 아니다.
+
+## 1차 실험 화면 기록 (사용자 제공)
+
+### 4개 Grid 조건이 설정된 Workbench
+![Workbench의 grid_nm Parameter Sweep](results/workbench_user.webp)
+
+### Sentaurus Visual의 BTotal 중첩 그래프
+![80 keV Boron 4개 Grid 조건의 중첩 그래프](results/grid_convergence_user.webp)
+
+위 두 이미지는 **실제 사용자가 업로드한 실행 화면**을 GitHub 웹 표시용으로 변환하여 보관한 것이다. CSV 기반 재작성 그래프와 구분한다.

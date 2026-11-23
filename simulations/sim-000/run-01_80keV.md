@@ -38,6 +38,13 @@
 | n9 | 5 nm |
 
 ## 3. 실제 수행 과정
+
+### Workbench에서 설정한 4개 Grid 파라미터
+
+![사용자가 제공한 Workbench grid_nm 설정 화면](results/workbench_user.webp)
+
+*노드 n2=0.5 nm, n7=1 nm, n8=2 nm, n9=5 nm. 사용자가 업로드한 Workbench 화면을 웹 게시용으로 변환한 이미지다.*
+
 1. Traditional SWB 프로젝트 grid_nm에서 SPROCESS 명령어 파일 **sprocess_fps.cmd**를 작성했다.
 2. 지역/기판 초기화 → Boron implant → BTotal .plx와 구조 .tdr 저장 명령을 구성했다.
 3. Workbench에 **grid_nm 파라미터(0.5, 1, 2, 5)**를 추가하여 4개 노드를 생성했다.
@@ -50,9 +57,9 @@
 
 ## 4. 그래프 및 정량 결과
 
-![80 keV Boron BTotal Grid sweep](results/profile_overlay.svg)
+![사용자가 업로드한 80 keV Boron BTotal 중첩 그래프](results/grid_convergence_user.webp)
 
-*위 이미지는 실제 Sentaurus Visual에서 export한 CSV로 다시 그린 그래프이며, 원본 화면 캡처 그 자체는 아니다. 네 농도 곡선이 표시 축 범위에서는 거의 중첩된다.*
+*위 이미지는 사용자가 제공한 **실제 Sentaurus Visual 중첩 그래프 화면**이다(웹 게시용 WebP 변환). 네 농도 곡선은 표시 축 범위에서 거의 중첩된다.*
 
 | Grid | Peak BTotal (cm⁻³) | Peak 위치 (µm) | Peak 상대오차† | 피크 위치 차이† |
 | --- | ---: | ---: | ---: | ---: |
@@ -110,5 +117,6 @@
 ## 데이터 파일
 - [원본 CSV — grid_convergence.csv](results/grid_convergence.csv)
 - [비교 지표 CSV — convergence_metrics.csv](results/convergence_metrics.csv)
-- [그래프 SVG — profile_overlay.svg](results/profile_overlay.svg)
+- [실제 S-Visual 중첩 화면 — grid_convergence_user.webp](results/grid_convergence_user.webp)
+- [실제 Workbench 파라미터 화면 — workbench_user.webp](results/workbench_user.webp)
 - [실제 명령어 — sprocess_fps.cmd](sprocess_fps.cmd)

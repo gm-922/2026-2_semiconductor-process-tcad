@@ -20,9 +20,23 @@
 | Grid 간격 (0~0.8 µm) | **0.5, 1, 2, 5 nm** | **0.5, 2, 5 nm** |
 | RTA | 없음 (as-implanted) | 없음 |
 | 실행 환경 | Sentaurus Workbench / Process / Visual T-2022.03 | 동일 계열 |
-| 결과·자료 | [1차 상세 기록](run-01_80keV/README.md) | [2차 상세 기록](run-02_20_170keV/README.md) |
+| 결과·자료 | [1차 상세 기록](run-01_80keV/README.md) | [2차 상세 기록](run-02_20_170keV/README.md) · [사용자 제공 Workbench 화면](run-02_20_170keV/results/workbench.png) · [BTotal 중첩 그래프](run-02_20_170keV/results/2nd_grid_convergence.png) |
 
 공통 깊이 범위는 **Si 0~2 µm**이며, **0~0.8 µm**에서 각 후보 Grid를 비교하고 **1.2 µm 10 nm / 2.0 µm 20 nm**로 이후 간격을 완만히 증가시키는 구조다. 2차는 1 nm를 제외했으며, 1차의 1 nm 데이터는 원본에 보존했다.
+
+### 2차 실행 화면 — 사용자 제공 원본
+
+다음 두 이미지는 **2026-11-23에 실제 수행한 2차 SWB 설정 화면과 Sentaurus Visual 농도 중첩 그래프**다. 원본 PNG를 변형 없이 보존했으며, 이 화면 자체만으로 오차를 판정하지 않고 아래 CSV 기반 정량 지표를 함께 확인한다.
+
+**Workbench: Energy 20/170 keV × Grid 0.5/2/5 nm → 총 6개 실험**
+
+![2차 Sentaurus Workbench 실험 설정: 20/170 keV와 0.5/2/5 nm 조합](run-02_20_170keV/results/workbench.png)
+
+**Sentaurus Visual: 6개 BTotal 깊이별 농도 프로파일 중첩**
+
+![2차 BTotal 농도 프로파일(20 keV와 170 keV, Grid별 3개 곡선)](run-02_20_170keV/results/2nd_grid_convergence.png)
+
+20 keV의 얕은 피크와 170 keV의 상대적으로 깊은 피크는 구분되지만, **같은 에너지 안에서는 Grid별 곡선이 거의 겹친다**. 이것이 바로 2 nm를 선택한 정량 비교의 출발점이다. [2차 원본 CSV](run-02_20_170keV/results/2nd_grid_convergence.csv)와 [상세 기록](run-02_20_170keV/README.md)을 함께 참고한다.
 
 ## 3. 평가 및 비교 방법
 
@@ -100,12 +114,15 @@ simulations/sim-000/
 │   └── results/                 # CSV 3종 + 실제 사용자 제공 Workbench/S-Visual 이미지
 └── run-02_20_170keV/
     ├── README.md                 # 2차 실행 기록·오류 수정 이력·비교 분석
+    ├── sprocess_fps.cmd          # 사용자 제공 2차 입력 코드
     └── results/
         ├── 2nd_grid_convergence.csv  # 2차 실제 XY 내보내기
-        └── convergence_metrics.csv   # 1·2차 비교값 중 2차 계산 지표
+        ├── convergence_metrics.csv   # 2차 정량 계산 지표
+        ├── workbench.png             # SWB 파라미터 설정 원본 화면
+        └── 2nd_grid_convergence.png  # S-Visual BTotal 중첩 원본 그래프
 ```
 
 - **1차 기록/원자료:** [실행 및 세부 분석](run-01_80keV/README.md), [원본 PLX CSV](run-01_80keV/results/grid_convergence.csv), [TDR XY CSV](run-01_80keV/results/mesh_TDR.csv), [중첩 그래프](run-01_80keV/results/grid_convergence_user.webp), [Workbench 설정](run-01_80keV/results/workbench_user.webp).
-- **2차 기록/원자료:** [실행 및 세부 분석](run-02_20_170keV/README.md), [원본 CSV](run-02_20_170keV/results/2nd_grid_convergence.csv), [비교 지표 CSV](run-02_20_170keV/results/convergence_metrics.csv).
+- **2차 기록/원자료:** [실행 및 세부 분석](run-02_20_170keV/README.md), [사용자 제공 명령어 파일](run-02_20_170keV/sprocess_fps.cmd), [원본 CSV](run-02_20_170keV/results/2nd_grid_convergence.csv), [비교 지표 CSV](run-02_20_170keV/results/convergence_metrics.csv), [Workbench 화면](run-02_20_170keV/results/workbench.png), [중첩 그래프](run-02_20_170keV/results/2nd_grid_convergence.png).
 
-**기록 원칙:** 1차 원본 및 상세 기록은 새 폴더로 이동만 하고 기존 수치를 임의 수정하지 않았다. 2차의 원본 `.cmd`, 서버 로그·TDR은 대화에서 파일로 별도 제공되지 않았으므로 **업로드된 CSV와 사용자가 확인한 done 상태를 근거**로 기록했다.
+**기록 원칙:** 1차 원본 및 상세 기록은 새 폴더로 이동만 하고 기존 수치를 임의 수정하지 않았다. **2차 사용자 제공 `.cmd`·CSV·Workbench/그래프 PNG 파일은 2026-11-23에 추가 제공되어 보존**했다. `.cmd`는 제공된 입력 덱 파일이며, 실행 로그·TDR 바이너리는 여전히 GitHub에 미첨부이다. 실제 실행 완료 상태는 사용자 확인과 제공된 CSV에 근거한다.

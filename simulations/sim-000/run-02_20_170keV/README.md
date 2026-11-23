@@ -3,7 +3,7 @@
 - **수행일:** 2026-11-23
 - **상태:** 6개 조건 `done`(사용자 확인); PLX XY CSV 업로드·정량 분석 완료.
 - **목적:** 1차(80 keV)에서 잠정 선정한 2 nm가 얕은 주입(20 keV)과 깊은 주입(170 keV)에서도 안정적으로 BTotal 분포를 재현하는지 검증하고, **SIM-000의 as-implanted 기준 Grid를 선정**한다.
-- **근거 자료:** [원본 XY CSV](results/2nd_grid_convergence.csv), [계산 지표 CSV](results/convergence_metrics.csv). **2차 원본 `.cmd`, TDR 바이너리 및 서버 로그 파일은 GitHub에 별도로 업로드하지 않았다.**
+- **근거 자료:** [원본 XY CSV](results/2nd_grid_convergence.csv), [계산 지표 CSV](results/convergence_metrics.csv), [사용자 제공 입력 덱](sprocess_fps.cmd), [SWB 설정 화면](results/workbench.png), [S-Visual 그래프](results/2nd_grid_convergence.png). **2차 TDR 바이너리 및 서버 상세 로그 파일은 GitHub에 미첨부.**
 - **전체 종합 결론:** [상위 SIM-000 README](../README.md).
 
 ## 1. 실제 비교 설계
@@ -32,6 +32,18 @@
 
 1차 1 nm 조건은 이번 2차 스윕에서는 제외했다. 기존 1차(80 keV)의 1 nm 자료는 [1차 기록](../run-01_80keV/README.md)에 보존되어 있다.
 
+### 실제 사용 화면 — 사용자 제공 원본 PNG
+
+**Sentaurus Workbench의 Energy × Grid 조건 6개:**
+
+![2차 SWB 파라미터 실험 6개 설정](results/workbench.png)
+
+**Sentaurus Visual의 20/170 keV BTotal 중첩 그래프:**
+
+![2차 이온주입 깊이별 BTotal 중첩 그래프(6개 조건)](results/2nd_grid_convergence.png)
+
+두 에너지의 피크 깊이는 서로 다르지만, **동일 에너지에서 0.5·2·5 nm의 세 곡선은 시각적으로 거의 중첩**된다. 따라서 Grid 수렴 여부는 이 화면만 보지 않고 [XY CSV](results/2nd_grid_convergence.csv) 기반으로 피크·위치·RMSE를 정량 비교한다.
+
 ## 2. 실행 과정 및 오류·수정 이력
 
 1. 기존 1차 프로젝트를 보존하고 별도 Workbench 프로젝트 **`grid_nm2`**에서 2차 파라미터 스윕을 구성했다.
@@ -39,7 +51,7 @@
 3. 최초 실행 시 여섯 노드가 모두 `failed`로 표시됐다. 로그에서 **`energy=20    <keV>`**처럼 에너지 숫자와 단위 사이 공백이 있는 문법 오류가 확인됐다. 해당 공백을 제거해 **`energy=@energy_keV@<keV>`** 형태로 수정하고 재전처리·재실행했다.
 4. 사용자 확인 결과 **6개 모두 `done`**. S-Visual에서 여섯 `.plx`의 `BTotal` 대 깊이를 CSV로 추출해 이 문서의 분석에 사용했다.
 
-**재현성 참고:** 상기 파라미터 및 오류 수정은 대화와 실행 화면을 바탕으로 기록했다. 실제 실행을 마친 **2차 원본 `sprocess_fps.cmd` 파일 자체는 제공되지 않았으므로** 이 문서에서 이를 검증된 코드 파일인 것처럼 첨부하지 않는다.
+**재현성 참고:** 2차에 사용한 것으로 사용자가 제공한 **[`sprocess_fps.cmd`](sprocess_fps.cmd)**를 추가 보존했다. 파일에는 `energy=@energy_keV@<keV>` 및 `spacing=@grid_nm@<nm>`가 포함되어 있다. 실제 전처리 후 치환값 및 정상 종료 여부는 사용자 확인에 근거하며 서버 상세 로그는 업로드되지 않았다. 최초 실행에서 발생한 공백 문법 오류 및 수정 이력도 위에 따로 보존했다.
 
 ## 3. 실제 결과: 기준 Grid(0.5 nm) 대비
 
@@ -90,6 +102,9 @@
 
 ## 5. 원자료 및 분석 파일
 
+- [사용자 제공 **실제 입력 덱 — `sprocess_fps.cmd`**](sprocess_fps.cmd): Energy·Grid Sweep 용 템플릿 코드.
+- [사용자 제공 **Workbench 설정 화면 — `workbench.png`**](results/workbench.png): 6개 실험 조합.
+- [사용자 제공 **BTotal 중첩 그래프 — `2nd_grid_convergence.png`**](results/2nd_grid_convergence.png): 그래프 원본 PNG.
 - [실제 S-Visual XY 내보내기 — `2nd_grid_convergence.csv`](results/2nd_grid_convergence.csv): 6개 노드의 깊이/BTotal 열 12개. 파일명 및 헤더로 노드 구분.
 - [정량 비교 데이터 — `convergence_metrics.csv`](results/convergence_metrics.csv): 1·2차 비교를 한 표로 재계산한 값(에너지별 0.5 nm 기준).
 - [SIM-000 공통 결과 및 선택된 Grid 블록](../README.md).

@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "== S2_n5"; sprocess S2_n5.cmd > S2_n5.log 2>&1 || echo "!! S2_n5 실패"
+echo "== S3_n5_A"; sprocess S3_n5_A.cmd > S3_n5_A.log 2>&1 || echo "!! S3_n5_A 실패"
+echo "== S3_n5_B"; sprocess S3_n5_B.cmd > S3_n5_B.log 2>&1 || echo "!! S3_n5_B 실패"
+echo "== S4a_n5_C"; sprocess S4a_n5_C.cmd > S4a_n5_C.log 2>&1 || echo "!! S4a_n5_C 실패"
+echo "== S4b_n5_T2"; sprocess S4b_n5_T2.cmd > S4b_n5_T2.log 2>&1 || echo "!! S4b_n5_T2 실패"
+echo "== S4b_n5_T3"; sprocess S4b_n5_T3.cmd > S4b_n5_T3.log 2>&1 || echo "!! S4b_n5_T3 실패"
+echo "== S4b_n5_T4"; sprocess S4b_n5_T4.cmd > S4b_n5_T4.log 2>&1 || echo "!! S4b_n5_T4 실패"
+echo "== S4b_n5_Afurnace"; sprocess S4b_n5_Afurnace.cmd > S4b_n5_Afurnace.log 2>&1 || echo "!! S4b_n5_Afurnace 실패"
+echo "== N5 DONE"

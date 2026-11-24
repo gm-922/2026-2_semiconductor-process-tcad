@@ -14,7 +14,7 @@ implant Boron dose= 1.6066E+12<cm-2> energy= 600<keV> tilt= 7<degree> rotation= 
 implant Boron dose= 2.7800E+12<cm-2> energy= 450<keV> tilt= 7<degree> rotation= 22<degree>
 implant Boron dose= 8.7439E+11<cm-2> energy= 300<keV> tilt= 7<degree> rotation= 22<degree>
 implant Boron dose= 2.7197E+12<cm-2> energy= 200<keV> tilt= 7<degree> rotation= 22<degree>
-diffuse temperature= 1000<C> time= 6<h>
+diffuse temperature= 1000<C> time= 360<min>
 SetPlxList { BTotal }
 WritePlx S4b_n5_T4_BTotal.plx y=0 Silicon
 SetPlxList { BActive }
